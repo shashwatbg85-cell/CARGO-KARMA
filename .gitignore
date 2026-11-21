@@ -1,0 +1,48 @@
+# Python
+venv/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Node
+node_modules/
+frontend/node_modules/
+frontend/dist/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Temporary files
+*.log
+.DS_Store
+Thumbs.db
+
+# Uploaded or temporary datasets
+uploads/
+temp/
+# Project backup
+CargoKarma_Final_Backup.zip
+
+# Dataset folders
+data/
+archive*/
+uploads/
+
+# Jupyter temporary files
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
+notebooks/
+
+# Temporary files
+notebook
+
+# Old duplicate model
+models/Cargo Karma_xgboost.pkl
