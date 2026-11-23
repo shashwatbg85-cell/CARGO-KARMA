@@ -832,17 +832,15 @@ function App() {
       <aside className="sidebar">
         <div className="brand">
           <div className="brand-icon">
-            <BrainCircuit size={25} />
+            <BrainCircuit size={18} />
           </div>
           <div>
             <h2>
               Cargo <span>Karma</span>
             </h2>
-            <p>INTELLIGENCE PLATFORM</p>
+            <p>Risk Intelligence</p>
           </div>
         </div>
-
-        <div className="nav-label">MAIN MENU</div>
 
         <nav>
           {navigation.map((item) => {
@@ -856,7 +854,7 @@ function App() {
                 }`}
                 onClick={() => setActivePage(item.name)}
               >
-                <Icon size={19} />
+                <Icon size={18} />
                 <span>{item.name}</span>
               </button>
             );
@@ -871,7 +869,7 @@ function App() {
               setSettingsMessage("");
             }}
           >
-            <Settings size={19} />
+            <Settings size={18} />
             <span>Settings</span>
           </button>
 
@@ -891,11 +889,11 @@ function App() {
 
           <div className="topbar-actions">
             <button className="icon-button">
-              <Search size={19} />
+              <Search size={18} />
             </button>
 
             <button className="icon-button notification">
-              <Bell size={19} />
+              <Bell size={18} />
             </button>
 
             <div className="profile">
@@ -913,13 +911,13 @@ function App() {
           <>
             <motion.section
               className="welcome-section"
-              initial={{ opacity: 0, y: 22 }}
+              initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.65, ease: "easeOut" }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
             >
               <div>
-                <p className="eyebrow">AI-POWERED SUPPLY CHAIN INTELLIGENCE</p>
-                <h2>Welcome to Cargo Karma</h2>
+                <p className="eyebrow">Supply Chain Risk Intelligence</p>
+                <h2>Delivery Risk Overview</h2>
                 <p>
                   Monitor delivery risks, explore predictions and make smarter
                   decisions.
@@ -939,16 +937,12 @@ function App() {
                   <motion.div
                     className="stat-card"
                     key={stat.title}
-                    initial={{ opacity: 0, y: 24 }}
+                    initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{
-                      duration: 0.45,
-                      delay: index * 0.12,
+                      duration: 0.25,
+                      delay: index * 0.04,
                       ease: "easeOut",
-                    }}
-                    whileHover={{
-                      y: -5,
-                      transition: { duration: 0.2 },
                     }}
                   >
                     <div className="stat-top">
@@ -965,17 +959,8 @@ function App() {
               })}
             </section>
 
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                gap: "12px",
-                margin: "-8px 0 20px",
-                flexWrap: "wrap",
-              }}
-            >
-              <small style={{ opacity: 0.72 }}>
+            <div className="stats-footnote-row">
+              <small className="stats-footnote">
                 Statistics are calculated from saved Cargo Karma predictions,
                 not shipment totals.
               </small>
@@ -1005,61 +990,63 @@ function App() {
             <section className="content-grid">
               <motion.div
                 className="panel overview-panel"
-                initial={{ opacity: 0, y: 25 }}
+                initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.55, delay: 0.25 }}
+                transition={{ duration: 0.25, delay: 0.05 }}
               >
                 <div className="panel-heading">
                   <div>
                     <h3>Platform Overview</h3>
                     <p>Supply chain risk intelligence</p>
                   </div>
-                  <Activity size={21} />
+                  <Activity size={20} />
                 </div>
 
                 <div className="overview-content">
-                  <div className="overview-circle">
-                    <BrainCircuit size={48} />
+                  <p className="overview-description">
+                    An explainable machine learning platform that estimates
+                    e-commerce delivery-delay risk using the Brazilian Olist
+                    dataset.
+                  </p>
+
+                  <div className="info-row">
+                    <span>Target Operational Scope</span>
+                    <strong>E-Commerce Last-Mile</strong>
                   </div>
 
-                  <h2>Predict. Analyze. Optimize.</h2>
+                  <div className="info-row">
+                    <span>Validation Status</span>
+                    <strong>Olist Benchmark (Non-Indian)</strong>
+                  </div>
 
-                  <p>
-                    An explainable AI prototype that estimates e-commerce
-                    delivery-delay risk using the Brazilian Olist dataset.
-                  </p>
-                  <p
-                    style={{
-                      fontSize: "12px",
-                      opacity: 0.72,
-                      marginTop: "10px",
-                    }}
-                  >
-                    Not validated for Indian freight, ports, or bulk-cargo
-                    operations.
+                  <p className="overview-disclaimer">
+                    Not validated for Indian freight, ports, vessels, or
+                    bulk-cargo operations.
                   </p>
 
-                  <button
-                    className="primary-button"
-                    onClick={() => setActivePage("Risk Prediction")}
-                  >
-                    Start Risk Prediction <ArrowUpRight size={17} />
-                  </button>
+                  <div className="overview-actions">
+                    <button
+                      className="primary-button"
+                      onClick={() => setActivePage("Risk Prediction")}
+                    >
+                      Start Risk Prediction <ArrowUpRight size={17} />
+                    </button>
+                  </div>
                 </div>
               </motion.div>
 
               <motion.div
                 className="panel activity-panel"
-                initial={{ opacity: 0, y: 25 }}
+                initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.55, delay: 0.4 }}
+                transition={{ duration: 0.25, delay: 0.08 }}
               >
                 <div className="panel-heading">
                   <div>
                     <h3>Model Information</h3>
                     <p>Current prediction engine</p>
                   </div>
-                  <ShieldAlert size={21} />
+                  <ShieldAlert size={20} />
                 </div>
 
                 <div className="info-row">
@@ -1097,9 +1084,9 @@ function App() {
         {activePage === "Data Explorer" && (
           <motion.section
             className="data-explorer"
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, ease: "easeOut" }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
           >
             <div className="panel explorer-upload">
               <div className="panel-heading">
@@ -1107,7 +1094,7 @@ function App() {
                   <h3>Dataset Management</h3>
                   <p>Upload and explore your supply chain datasets</p>
                 </div>
-                <Database size={24} />
+                <Database size={20} />
               </div>
 
               <div
@@ -1355,7 +1342,7 @@ function App() {
                         <h3>Dataset Preview</h3>
                         <p>First 10 rows of your dataset</p>
                       </div>
-                      <Package size={22} />
+                      <Package size={20} />
                     </div>
 
                     <div className="table-wrapper">
@@ -1394,9 +1381,9 @@ function App() {
         {activePage === "Analytics" && (
           <motion.section
             className="analytics-section"
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
           >
             {/* MODEL PERFORMANCE */}
             <div className="analytics-heading">
@@ -1435,10 +1422,13 @@ function App() {
               <div className="panel-heading">
                 <div>
                   <h3>Feature Importance Analysis</h3>
-                  <p>Top 15 features influencing model predictions</p>
+                  <p>
+                    Top 15 features influencing model predictions (Primary Model
+                    Metric)
+                  </p>
                 </div>
 
-                <ChartNoAxesCombined size={23} />
+                <ChartNoAxesCombined size={20} />
               </div>
 
               {analyticsLoading && (
@@ -1488,10 +1478,12 @@ function App() {
 
                         <Tooltip
                           contentStyle={{
-                            backgroundColor: "#111c2e",
-                            border: "1px solid #34445d",
+                            backgroundColor: "#0d182b",
+                            border: "1px solid #1e3352",
                             borderRadius: "8px",
-                            color: "#ffffff",
+                            color: "#f0f6fc",
+                            fontSize: "12px",
+                            fontVariantNumeric: "tabular-nums",
                           }}
                           formatter={(value) => [
                             Number(value).toFixed(5),
@@ -1501,9 +1493,9 @@ function App() {
 
                         <Bar
                           dataKey="Importance"
-                          fill="#55c7f3"
-                          radius={[0, 5, 5, 0]}
-                          barSize={19}
+                          fill="#00d4ff"
+                          radius={[0, 4, 4, 0]}
+                          barSize={18}
                         />
                       </BarChart>
                     </ResponsiveContainer>
@@ -1519,121 +1511,126 @@ function App() {
                 )}
             </div>
 
-            {/* MODEL COMPARISON */}
-            <div className="panel model-comparison-panel">
-              <div className="panel-heading">
-                <div>
-                  <h3>Model Performance Comparison</h3>
-                  <p>Compare Logistic Regression, Random Forest and XGBoost</p>
+            {/* SECONDARY ANALYTICS GRID: MODEL COMPARISON & MODEL SPECS */}
+            <div className="analytics-bottom-grid">
+              {/* MODEL COMPARISON */}
+              <div className="panel model-comparison-panel">
+                <div className="panel-heading">
+                  <div>
+                    <h3>Model Performance Comparison</h3>
+                    <p>Benchmark comparison across evaluated algorithms</p>
+                  </div>
+
+                  <TrendingUp size={20} />
                 </div>
 
-                <TrendingUp size={23} />
-              </div>
-
-              <div className="comparison-chart">
-                <ResponsiveContainer width="100%" height={380}>
-                  <BarChart
-                    data={modelComparisonData}
-                    margin={{
-                      top: 20,
-                      right: 25,
-                      left: 10,
-                      bottom: 10,
-                    }}
-                  >
-                    <CartesianGrid
-                      strokeDasharray="3 3"
-                      stroke="#29374d"
-                      vertical={false}
-                    />
-
-                    <XAxis
-                      dataKey="metric"
-                      stroke="#94a3b8"
-                      tick={{ fill: "#cbd5e1", fontSize: 12 }}
-                    />
-
-                    <YAxis
-                      domain={[0, 100]}
-                      stroke="#94a3b8"
-                      tick={{ fill: "#94a3b8", fontSize: 11 }}
-                      tickFormatter={(value) => `${value}%`}
-                    />
-
-                    <Tooltip
-                      formatter={(value) => `${value}%`}
-                      contentStyle={{
-                        backgroundColor: "#111c2e",
-                        border: "1px solid #34445d",
-                        borderRadius: "8px",
-                        color: "#ffffff",
+                <div className="comparison-chart">
+                  <ResponsiveContainer width="100%" height={340}>
+                    <BarChart
+                      data={modelComparisonData}
+                      margin={{
+                        top: 20,
+                        right: 25,
+                        left: 10,
+                        bottom: 10,
                       }}
-                    />
+                    >
+                      <CartesianGrid
+                        strokeDasharray="3 3"
+                        stroke="#29374d"
+                        vertical={false}
+                      />
 
-                    <Legend />
+                      <XAxis
+                        dataKey="metric"
+                        stroke="#94a3b8"
+                        tick={{ fill: "#cbd5e1", fontSize: 12 }}
+                      />
 
-                    <Bar
-                      dataKey="Logistic Regression"
-                      fill="#8b9bb4"
-                      radius={[5, 5, 0, 0]}
-                    />
+                      <YAxis
+                        domain={[0, 100]}
+                        stroke="#94a3b8"
+                        tick={{ fill: "#94a3b8", fontSize: 11 }}
+                        tickFormatter={(value) => `${value}%`}
+                      />
 
-                    <Bar
-                      dataKey="Random Forest"
-                      fill="#a78bfa"
-                      radius={[5, 5, 0, 0]}
-                    />
+                      <Tooltip
+                        formatter={(value) => `${value}%`}
+                        contentStyle={{
+                          backgroundColor: "#0d182b",
+                          border: "1px solid #1e3352",
+                          borderRadius: "8px",
+                          color: "#f0f6fc",
+                          fontSize: "12px",
+                          fontVariantNumeric: "tabular-nums",
+                        }}
+                      />
 
-                    <Bar
-                      dataKey="XGBoost"
-                      fill="#55c7f3"
-                      radius={[5, 5, 0, 0]}
-                    />
-                  </BarChart>
-                </ResponsiveContainer>
-              </div>
+                      <Legend />
 
-              <div className="comparison-note">
-                <strong>Key Observation:</strong> XGBoost achieves the highest
-                Recall (63.39%) and ROC-AUC (77.19%), while Random Forest has
-                the highest Accuracy (80.92%) and F1-Score (30.53%).
-              </div>
-            </div>
+                      <Bar
+                        dataKey="Logistic Regression"
+                        fill="#64748b"
+                        radius={[4, 4, 0, 0]}
+                      />
 
-            {/* MODEL INFORMATION */}
-            <div className="panel analytics-info">
-              <div className="panel-heading">
-                <div>
-                  <h3>Model Information</h3>
-                  <p>Current machine learning model</p>
+                      <Bar
+                        dataKey="Random Forest"
+                        fill="#3b82f6"
+                        radius={[4, 4, 0, 0]}
+                      />
+
+                      <Bar
+                        dataKey="XGBoost"
+                        fill="#00d4ff"
+                        radius={[4, 4, 0, 0]}
+                      />
+                    </BarChart>
+                  </ResponsiveContainer>
                 </div>
 
-                <BrainCircuit size={23} />
+                <div className="comparison-note">
+                  <strong>Key Observation:</strong> XGBoost achieves the highest
+                  Recall (63.39%) and ROC-AUC (77.19%), while Random Forest has
+                  the highest Accuracy (80.92%) and F1-Score (30.53%).
+                </div>
               </div>
 
-              <div className="info-row">
-                <span>Algorithm</span>
-                <strong>XGBoost</strong>
-              </div>
+              {/* MODEL INFORMATION */}
+              <div className="panel analytics-info">
+                <div className="panel-heading">
+                  <div>
+                    <h3>Model Specifications</h3>
+                    <p>Current production model architecture</p>
+                  </div>
 
-              <div className="info-row">
-                <span>Dataset</span>
-                <strong>Olist E-commerce</strong>
-              </div>
+                  <BrainCircuit size={20} />
+                </div>
 
-              <div className="info-row">
-                <span>Total Records</span>
-                <strong>96,470</strong>
-              </div>
+                <div className="info-row">
+                  <span>Algorithm</span>
+                  <strong>XGBoost</strong>
+                </div>
 
-              <div className="info-row">
-                <span>Prediction Target</span>
-                <strong>Late Delivery</strong>
-              </div>
+                <div className="info-row">
+                  <span>Dataset</span>
+                  <strong>Olist E-commerce</strong>
+                </div>
 
-              <div className="info-row">
-                <span>ROC-AUC</span>
-                <strong>77.19%</strong>
+                <div className="info-row">
+                  <span>Total Records</span>
+                  <strong>96,470</strong>
+                </div>
+
+                <div className="info-row">
+                  <span>Prediction Target</span>
+                  <strong>Late Delivery</strong>
+                </div>
+
+                <div className="info-row">
+                  <span>ROC-AUC</span>
+                  <strong>77.19%</strong>
+                </div>
               </div>
             </div>
           </motion.section>
@@ -1642,9 +1639,9 @@ function App() {
         {activePage === "Explainable AI" && (
           <motion.section
             className="analytics-section explainable-section"
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
           >
             <div className="analytics-heading">
               <h2>Explainable AI Analysis</h2>
@@ -1689,7 +1686,7 @@ function App() {
                   <p>Top 15 features ranked by mean absolute SHAP value</p>
                 </div>
 
-                <ShieldAlert size={23} />
+                <ShieldAlert size={20} />
               </div>
 
               {shapLoading && (
@@ -1728,15 +1725,17 @@ function App() {
                         dataKey="Feature"
                         width={220}
                         stroke="#94a3b8"
-                        tick={{ fill: "#cbd5e1", fontSize: 10 }}
+                        tick={{ fill: "#cbd5e1", fontSize: 11 }}
                       />
 
                       <Tooltip
                         contentStyle={{
-                          backgroundColor: "#111c2e",
-                          border: "1px solid #34445d",
+                          backgroundColor: "#0d182b",
+                          border: "1px solid #1e3352",
                           borderRadius: "8px",
-                          color: "#ffffff",
+                          color: "#f0f6fc",
+                          fontSize: "12px",
+                          fontVariantNumeric: "tabular-nums",
                         }}
                         formatter={(value) => [
                           Number(value).toFixed(6),
@@ -1746,9 +1745,9 @@ function App() {
 
                       <Bar
                         dataKey="SHAP_Importance"
-                        fill="#55c7f3"
-                        radius={[0, 5, 5, 0]}
-                        barSize={19}
+                        fill="#00d4ff"
+                        radius={[0, 4, 4, 0]}
+                        barSize={18}
                       />
                     </BarChart>
                   </ResponsiveContainer>
@@ -1770,7 +1769,7 @@ function App() {
                   <p>How to interpret this analysis</p>
                 </div>
 
-                <BrainCircuit size={23} />
+                <BrainCircuit size={20} />
               </div>
 
               <div className="info-row">
@@ -1803,12 +1802,12 @@ function App() {
         {activePage === "Risk Prediction" && (
           <motion.section
             className="panel"
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
           >
             <div className="section-header">
-              <h2>AI Risk Prediction</h2>
+              <h2>Delivery Risk Prediction</h2>
               <p>Enter order details to predict late delivery risk.</p>
             </div>
 
@@ -1821,20 +1820,16 @@ function App() {
               </p>
             </div>
 
-            <h3>Location & Product Information</h3>
+            <h3 className="prediction-section-label">
+              Location &amp; Product Information
+            </h3>
 
-            <div
-              className="prediction-grid"
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-                gap: "18px",
-                marginTop: "20px",
-              }}
-            >
+            <div className="prediction-grid">
               {categoricalFields.map((field) => (
                 <div key={field.name}>
-                  <label>{field.label}</label>
+                  <label className="prediction-field-label">
+                    {field.label}
+                  </label>
 
                   <select
                     value={predictionData[field.name]}
@@ -1844,7 +1839,7 @@ function App() {
                         [field.name]: e.target.value,
                       })
                     }
-                    style={{ width: "100%" }}
+                    className="prediction-input"
                   >
                     {field.options.map((option) => (
                       <option key={option} value={option}>
@@ -1856,19 +1851,19 @@ function App() {
               ))}
             </div>
 
-            <h3 style={{ marginTop: "30px" }}>Order & Payment Information</h3>
-
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-                gap: "18px",
-                marginTop: "20px",
-              }}
+            <h3
+              className="prediction-section-label"
+              style={{ marginTop: "32px" }}
             >
+              Order &amp; Payment Information
+            </h3>
+
+            <div className="prediction-grid">
               {numericalFields.map((field) => (
                 <div key={field.name}>
-                  <label>{field.label}</label>
+                  <label className="prediction-field-label">
+                    {field.label}
+                  </label>
 
                   <input
                     type="number"
@@ -1881,20 +1876,12 @@ function App() {
                           e.target.value === "" ? "" : Number(e.target.value),
                       })
                     }
-                    style={{ width: "100%" }}
+                    className="prediction-input"
                   />
                 </div>
               ))}
             </div>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                gap: "15px",
-                marginTop: "30px",
-                flexWrap: "wrap",
-              }}
-            >
+            <div className="prediction-action-row">
               {/* Predict Button */}
               <button
                 className="primary-button"
@@ -1908,25 +1895,17 @@ function App() {
 
               {/* Reset Button */}
               <button
+                className="secondary-button"
                 onClick={handleResetPrediction}
                 disabled={predictionLoading}
-                style={{
-                  padding: "12px 24px",
-                  borderRadius: "8px",
-                  border: "1px solid #38bdf8",
-                  background: "transparent",
-                  color: "#38bdf8",
-                  cursor: "pointer",
-                  fontWeight: "600",
-                }}
               >
                 Reset Form
               </button>
             </div>
 
             {predictionError && (
-              <div style={{ marginTop: "20px" }}>
-                <p>{predictionError}</p>
+              <div className="panel error-message prediction-error">
+                {predictionError}
               </div>
             )}
 
@@ -1959,17 +1938,14 @@ function App() {
                   <motion.div
                     className="panel prediction-result-panel"
                     style={{ marginTop: "25px" }}
-                    initial={{ opacity: 0, y: 25 }}
+                    initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.55 }}
+                    transition={{ duration: 0.25 }}
                   >
                     {/* RESULT HEADER */}
                     <div className="prediction-result-header">
                       <div>
-                        <span className="result-eyebrow">
-                          AI POWERED ANALYSIS
-                        </span>
-                        <h3>AI Prediction Result</h3>
+                        <h3>Risk Assessment</h3>
                         <p>Delivery risk assessment and model insights</p>
                       </div>
 
@@ -1984,7 +1960,7 @@ function App() {
                       {/* RISK STATUS */}
                       <div className="risk-status-card">
                         <span className="result-label">
-                          DELIVERY RISK CLASSIFICATION
+                          Risk Classification
                         </span>
 
                         <div
@@ -2024,7 +2000,7 @@ function App() {
 
                         <div className="probability-details">
                           <span className="result-label">
-                            LATE DELIVERY PROBABILITY
+                            Late Delivery Probability
                           </span>
 
                           <h2 style={{ color: riskColor }}>
@@ -2079,7 +2055,7 @@ function App() {
                         </div>
 
                         <div className="model-detail-row">
-                          <span>AI Model</span>
+                          <span>Model</span>
                           <strong>{predictionResult.model}</strong>
                         </div>
 
@@ -2117,9 +2093,9 @@ function App() {
         {activePage === "Prediction History" && (
           <motion.section
             className="panel history-section"
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
           >
             <div className="panel-heading">
               <div>
@@ -2231,9 +2207,9 @@ function App() {
         {/* REPORTS MODULE */}
         {activePage === "Reports" && (
           <motion.section
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
           >
             <div className="panel reports-section">
               <div className="panel-heading">
@@ -2356,8 +2332,8 @@ function App() {
                             <Bar
                               dataKey="count"
                               name="Predictions"
-                              fill="#22d3ee"
-                              radius={[6, 6, 0, 0]}
+                              fill="#00d4ff"
+                              radius={[4, 4, 0, 0]}
                             />
                           </BarChart>
                         </ResponsiveContainer>
@@ -2384,9 +2360,9 @@ function App() {
         {activePage === "Settings" && (
           <motion.section
             className="settings-page"
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
           >
             <div className="settings-intro">
               <div>
@@ -2420,7 +2396,7 @@ function App() {
                   </div>
                   <div>
                     <span>Platform</span>
-                    <strong>AI-Powered Logistics Intelligence</strong>
+                    <strong>Supply Chain Risk Intelligence</strong>
                   </div>
                   <div>
                     <span>Frontend</span>
@@ -2656,7 +2632,7 @@ function App() {
 
         <footer>
           Cargo Karma © 2026
-          <span>AI-Powered Supply Chain Risk & Decision Intelligence</span>
+          <span>Supply Chain Risk & Decision Intelligence</span>
         </footer>
       </main>
     </div>
