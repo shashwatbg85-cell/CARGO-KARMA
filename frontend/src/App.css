@@ -756,9 +756,9 @@ footer {
   box-shadow: none;
 }
 
-.notification-dot.warning { background: var(--amber); box-shadow: 0 0 8px rgba(251,191,36,.4); }
-.notification-dot.success { background: var(--green); box-shadow: 0 0 8px rgba(52,211,153,.4); }
-.notification-dot.error   { background: var(--red);   box-shadow: 0 0 8px rgba(248,113,113,.4); }
+.notification-dot.warning { background: var(--amber); box-shadow: none; }
+.notification-dot.success { background: var(--green); box-shadow: none; }
+.notification-dot.error   { background: var(--red);   box-shadow: none; }
 
 .notification-content { flex: 1; min-width: 0; }
 .notification-content p { font-size: 12.5px; color: var(--text-soft); line-height: 1.5; }
@@ -1047,9 +1047,7 @@ footer {
 
 .stat-card:hover {
   border-color: rgba(56, 189, 248, 0.35);
-  box-shadow:
-    0 10px 32px rgba(0, 0, 0, 0.3),
-    0 0 22px rgba(56, 189, 248, 0.07);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.3);
 }
 
 .stat-card::after {
@@ -1112,15 +1110,6 @@ th {
   box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.12);
 }
 
-/* Overview Icon */
-
-.overview-circle {
-  background: linear-gradient(135deg, #12365a, #10243e);
-  color: #60c5ff;
-  border-color: rgba(56, 189, 248, 0.3);
-  box-shadow: 0 0 28px rgba(56, 189, 248, 0.15);
-}
-
 /* Settings */
 
 .settings-intro {
@@ -1129,10 +1118,6 @@ th {
     rgba(56, 189, 248, 0.09),
     rgba(34, 211, 238, 0.04)
   );
-}
-
-.settings-switch input:checked + span {
-  background: #0284c7;
 }
 
 /* Comparison Information */
@@ -1211,8 +1196,7 @@ th {
 .prediction-grid + h3 + div input:focus {
   background: #12243a;
   border-color: #38bdf8;
-  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.13),
-              0 0 16px rgba(56, 189, 248, 0.08);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
 }
 
 .prediction-grid input:focus-visible,
@@ -2786,6 +2770,8 @@ th {
 }
 
 .settings-switch span:before {
+  top: 3px;
+  left: 3px;
   width: 15px;
   height: 15px;
   background: #cbd5e1;
@@ -2798,6 +2784,11 @@ th {
 .settings-switch input:checked + span:before {
   transform: translateX(19px);
   background: #ffffff;
+}
+
+.settings-switch input:focus-visible + span {
+  outline: 2px solid var(--primary-bright);
+  outline-offset: 2px;
 }
 
 .settings-button-row {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import axios from "axios";
 import {
@@ -73,7 +73,7 @@ function App() {
     try {
       await axios.get(`${API}/`);
       setApiStatus("online");
-    } catch (err) {
+    } catch {
       setApiStatus("offline");
     } finally {
       setApiCheckedAt(new Date().toLocaleString());
@@ -178,7 +178,12 @@ function App() {
   };
 
   useEffect(() => {
-    if (activePage === "Overview") fetchDashboardSummary();
+    if (activePage === "Overview") {
+      const timer = setTimeout(() => {
+        fetchDashboardSummary();
+      }, 0);
+      return () => clearTimeout(timer);
+    }
   }, [activePage]);
 
   // Handle Risk Prediction
@@ -240,7 +245,7 @@ function App() {
 
       // Validate empty fields
       const emptyFields = Object.entries(predictionData).filter(
-        ([key, value]) => value === "" || value === null || value === undefined,
+        ([, value]) => value === "" || value === null || value === undefined,
       );
 
       if (emptyFields.length > 0) {
@@ -675,7 +680,7 @@ function App() {
       window.URL.revokeObjectURL(url);
 
       setMessage("CSV downloaded successfully!");
-    } catch (err) {
+    } catch {
       setError("Download failed.");
     } finally {
       setLoading(false);
@@ -751,7 +756,10 @@ function App() {
 
   useEffect(() => {
     if (activePage === "Prediction History" || activePage === "Reports") {
-      fetchPredictionHistory();
+      const timer = setTimeout(() => {
+        fetchPredictionHistory();
+      }, 0);
+      return () => clearTimeout(timer);
     }
   }, [activePage]);
 
@@ -888,11 +896,11 @@ function App() {
           </div>
 
           <div className="topbar-actions">
-            <button className="icon-button">
+            <button type="button" className="icon-button" aria-label="Search workspace" title="Search workspace">
               <Search size={18} />
             </button>
 
-            <button className="icon-button notification">
+            <button type="button" className="icon-button notification" aria-label="Notifications" title="Notifications">
               <Bell size={18} />
             </button>
 
@@ -1827,11 +1835,13 @@ function App() {
             <div className="prediction-grid">
               {categoricalFields.map((field) => (
                 <div key={field.name}>
-                  <label className="prediction-field-label">
+                  <label htmlFor={`pred-${field.name}`} className="prediction-field-label">
                     {field.label}
                   </label>
 
                   <select
+                    id={`pred-${field.name}`}
+                    name={field.name}
                     value={predictionData[field.name]}
                     onChange={(e) =>
                       setPredictionData({
@@ -1861,11 +1871,13 @@ function App() {
             <div className="prediction-grid">
               {numericalFields.map((field) => (
                 <div key={field.name}>
-                  <label className="prediction-field-label">
+                  <label htmlFor={`pred-${field.name}`} className="prediction-field-label">
                     {field.label}
                   </label>
 
                   <input
+                    id={`pred-${field.name}`}
+                    name={field.name}
                     type="number"
                     step="any"
                     value={predictionData[field.name]}
@@ -1884,6 +1896,7 @@ function App() {
             <div className="prediction-action-row">
               {/* Predict Button */}
               <button
+                type="button"
                 className="primary-button"
                 onClick={handlePrediction}
                 disabled={predictionLoading}
@@ -1895,6 +1908,7 @@ function App() {
 
               {/* Reset Button */}
               <button
+                type="button"
                 className="secondary-button"
                 onClick={handleResetPrediction}
                 disabled={predictionLoading}
@@ -1904,7 +1918,7 @@ function App() {
             </div>
 
             {predictionError && (
-              <div className="panel error-message prediction-error">
+              <div className="panel error-message prediction-error" role="alert" aria-live="polite">
                 {predictionError}
               </div>
             )}
@@ -2172,14 +2186,14 @@ function App() {
                     </tr>
                   </thead>
                   <tbody>
-                    {predictionHistory.map((record) => (
-                      <tr key={record.id}>
-                        <td>{record.id}</td>
+                    {predictionHistory.map((record, index) => (
+                      <tr key={record.id ?? `history-${index}`}>
+                        <td>{record.id ?? index + 1}</td>
                         <td>{record.prediction_time}</td>
                         <td>{record.customer_state}</td>
                         <td>{record.product_category}</td>
                         <td>
-                          {Number(record.late_delivery_probability).toFixed(2)}%
+                          {(Number(record.late_delivery_probability) || 0).toFixed(2)}%
                         </td>
                         <td>
                           <span
@@ -2307,7 +2321,7 @@ function App() {
                           marginTop: "16px",
                         }}
                       >
-                        <ResponsiveContainer>
+                        <ResponsiveContainer width="100%" height="100%">
                           <BarChart
                             data={[
                               {
@@ -2515,6 +2529,7 @@ function App() {
                   <label className="settings-switch">
                     <input
                       type="checkbox"
+                      aria-label="Show model disclaimer"
                       checked={preferences.showModelDisclaimer}
                       onChange={(e) =>
                         setPreferences({
@@ -2537,6 +2552,7 @@ function App() {
                   <label className="settings-switch">
                     <input
                       type="checkbox"
+                      aria-label="Confirm before reset"
                       checked={preferences.confirmBeforeReset}
                       onChange={(e) =>
                         setPreferences({
@@ -2558,6 +2574,7 @@ function App() {
                   <label className="settings-switch">
                     <input
                       type="checkbox"
+                      aria-label="Compact data tables"
                       checked={preferences.compactTables}
                       onChange={(e) =>
                         setPreferences({
