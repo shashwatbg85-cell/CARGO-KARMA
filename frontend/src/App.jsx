@@ -896,11 +896,21 @@ function App() {
           </div>
 
           <div className="topbar-actions">
-            <button type="button" className="icon-button" aria-label="Search workspace" title="Search workspace">
+            <button
+              type="button"
+              className="icon-button"
+              aria-label="Search workspace"
+              title="Search workspace"
+            >
               <Search size={18} />
             </button>
 
-            <button type="button" className="icon-button notification" aria-label="Notifications" title="Notifications">
+            <button
+              type="button"
+              className="icon-button notification"
+              aria-label="Notifications"
+              title="Notifications"
+            >
               <Bell size={18} />
             </button>
 
@@ -1033,12 +1043,14 @@ function App() {
                   </p>
 
                   <div className="overview-actions">
-                    <button
+                    <motion.button
                       className="primary-button"
+                      whileHover={{ scale: 1.03 }}
+                      whileTap={{ scale: 0.98 }}
                       onClick={() => setActivePage("Risk Prediction")}
                     >
                       Start Risk Prediction <ArrowUpRight size={17} />
-                    </button>
+                    </motion.button>
                   </div>
                 </div>
               </motion.div>
@@ -1835,7 +1847,10 @@ function App() {
             <div className="prediction-grid">
               {categoricalFields.map((field) => (
                 <div key={field.name}>
-                  <label htmlFor={`pred-${field.name}`} className="prediction-field-label">
+                  <label
+                    htmlFor={`pred-${field.name}`}
+                    className="prediction-field-label"
+                  >
                     {field.label}
                   </label>
 
@@ -1871,7 +1886,10 @@ function App() {
             <div className="prediction-grid">
               {numericalFields.map((field) => (
                 <div key={field.name}>
-                  <label htmlFor={`pred-${field.name}`} className="prediction-field-label">
+                  <label
+                    htmlFor={`pred-${field.name}`}
+                    className="prediction-field-label"
+                  >
                     {field.label}
                   </label>
 
@@ -1918,7 +1936,11 @@ function App() {
             </div>
 
             {predictionError && (
-              <div className="panel error-message prediction-error" role="alert" aria-live="polite">
+              <div
+                className="panel error-message prediction-error"
+                role="alert"
+                aria-live="polite"
+              >
                 {predictionError}
               </div>
             )}
@@ -2193,7 +2215,10 @@ function App() {
                         <td>{record.customer_state}</td>
                         <td>{record.product_category}</td>
                         <td>
-                          {(Number(record.late_delivery_probability) || 0).toFixed(2)}%
+                          {(
+                            Number(record.late_delivery_probability) || 0
+                          ).toFixed(2)}
+                          %
                         </td>
                         <td>
                           <span

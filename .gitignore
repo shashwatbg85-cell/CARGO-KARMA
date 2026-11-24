@@ -46,3 +46,7 @@ notebook
 
 # Old duplicate model
 models/Cargo Karma_xgboost.pkl
+
+# Backup and external repos
+*.bak
+/unslop/
